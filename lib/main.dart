@@ -17,7 +17,6 @@ class RandomWordsState extends State<RandomWords> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Startup Name Generator'), actions: <Widget>[
-        // Add 3 lines from here...
         IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
       ]),
       body: _buildSuggestions(),
@@ -46,13 +45,12 @@ class RandomWordsState extends State<RandomWords> {
   Widget _buildSuggestions() {
     return ListView.builder(
         padding: const EdgeInsets.all(16.0),
-        itemBuilder: /*1*/ (context, i) {
+        itemBuilder: (context, i) {
           if (i.isOdd) return Divider();
-          /*2*/
 
-          final index = i ~/ 2; /*3*/
+          final index = i ~/ 2;
           if (index >= _suggestions.length) {
-            _suggestions.addAll(generateWordPairs().take(10)); /*4*/
+            _suggestions.addAll(generateWordPairs().take(10));
           }
           return _buildRow(_suggestions[index]);
         });
@@ -78,12 +76,11 @@ class RandomWordsState extends State<RandomWords> {
           ).toList();
 
           return Scaffold(
-            // Add 6 lines from here...
             appBar: AppBar(
               title: Text('Saved Suggestions'),
             ),
             body: ListView(children: divided),
-          ); // ... to here.
+          );
         },
       ),
     );
